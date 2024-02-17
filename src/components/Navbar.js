@@ -9,10 +9,15 @@ import "../styles/Navbar.css";
 
 function Navbar() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [showLinks, setShowLinks] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
+      // Show links by default if window width is greater than 600px
+      if (window.innerWidth > 600) {
+        setShowLinks(true);
+      }
     };
 
     window.addEventListener('resize', handleResize);
@@ -29,21 +34,18 @@ function Navbar() {
         <img src={Logo} alt="Logo" />
       </div>
       <div className="rightside">
-        <Link to="/">Home</Link>
-        <Link to="/menu">Menu</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
-        {windowWidth <= 600 ? (
-          <Button>
-            <ReorderIcon />
-          </Button>
-        ) : (
-          <div>
-            {/* <Link to="/">Home</Link>
+        {showLinks && (
+          <>
+            <Link to="/">Home</Link>
             <Link to="/menu">Menu</Link>
             <Link to="/about">About</Link>
-            <Link to="/contact">Contact</Link> */}
-          </div>
+            <Link to="/contact">Contact</Link>
+          </>
+        )}
+        {windowWidth <= 600 && (
+          <Button onClick={() => setShowLinks(!showLinks)}>
+            <ReorderIcon />
+          </Button>
         )}
       </div>
     </div>
