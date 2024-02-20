@@ -1,4 +1,34 @@
-// 
+// import React from 'react'
+// import Logo from "../assets/pizzaLogo.png"; 
+// import { Link } from 'react-router-dom';
+// import ReorderIcon from "@mui/icons-material/Reorder";
+// import "../styles/Navbar.css";
+// import { Button } from '@mui/material';
+
+
+// function Navbar() {
+//   return (
+//     <div className="navbar"> 
+//     <div className="leftside">
+//         <img src={Logo} />
+//     </div>
+//     <div className="rightside">
+//         <Link to="/"> Home </Link>
+//         <Link to="/menu"> Menu </Link>
+//         <Link to="/about"> About </Link>
+//         <Link to="/contact"> contact </Link>
+//         <Button>
+//           <ReorderIcon/>
+//         </Button>
+//     </div>
+
+
+//     </div>
+//   )
+// } 
+
+// export default Navbar
+
 
 import React, { useState, useEffect } from 'react';
 import Logo from "../assets/pizzaLogo.png";
@@ -14,19 +44,19 @@ function Navbar() {
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
-      // Show links by default if window width is greater than 600px
-      if (window.innerWidth > 600) {
-        setShowLinks(true);
-      }
     };
 
     window.addEventListener('resize', handleResize);
 
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []); // Empty dependency array to ensure effect only runs once on mount
+  }, []);
+
+  useEffect(() => {
+    // Show links by default if window width is greater than 600px
+    setShowLinks(windowWidth > 600);
+  }, [windowWidth]);
 
   return (
     <div className="navbar">
