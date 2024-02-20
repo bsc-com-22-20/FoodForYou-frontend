@@ -41,6 +41,11 @@ function Navbar() {
 
   const [openLinks, setOpenLinks] = useState(false)
 
+  const toggleNavbar = () => {
+    setOpenLinks(!openLinks);
+
+  }
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [showLinks, setShowLinks] = useState(true);
 
@@ -77,7 +82,7 @@ function Navbar() {
           </>
         )}
         {windowWidth <= 600 && (
-          <Button onClick={() => setShowLinks(!showLinks)}>
+          <Button onClick={() => setShowLinks(!showLinks)} onclick={toggleNavbar}>
             <ReorderIcon />
           </Button>
         )}
