@@ -1,11 +1,11 @@
 import React from 'react'
-import pizzaLeft from "../assets/pizzaLeft.jpg";
+import Vegan  from "../assets/vegan.jpg";
 import "../styles/contact.css"
 function contact() {
   return (
     <div className="contact">
         <div className="leftside"
-         style={{backgroundImage: `url(${pizzaLeft})` }}></div>
+         style={{backgroundImage: `url(${Vegan})` }}></div>
         <div className="rightside">
             <h1> Contact us</h1>
             <form id="contact-form" method="POST">
