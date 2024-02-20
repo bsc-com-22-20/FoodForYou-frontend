@@ -38,6 +38,9 @@ import { Button } from '@mui/material';
 import "../styles/Navbar.css";
 
 function Navbar() {
+
+  const [openLinks, setOpenLinks] = useState(false)
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [showLinks, setShowLinks] = useState(true);
 
@@ -60,8 +63,9 @@ function Navbar() {
 
   return (
     <div className="navbar">
-      <div className="leftside">
+      <div className="leftside" id={openLinks ? "open" : "close"}>
         <img src={Logo} alt="Logo" />
+        <div className="hiddenLinks"> </div>
       </div>
       <div className="rightside">
         {showLinks && (
